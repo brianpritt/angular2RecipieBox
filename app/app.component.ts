@@ -4,30 +4,28 @@ import { Component } from '@angular/core';
   selector: 'app-root',
   template: `
   <div class="container">
-    <h1>To Do List for {{month}}/{{day}}/{{year}}</h1>
+    <h1>Angular Recipie Box</h1>
     <h3>{{currentFocus}}</h3>
     <ul>
-      <li *ngFor="let currentTask of tasks">{{currentTask.description}}</li>
+      <li *ngFor="let currentRecipe of recipies">{{currentRecipe.title}}
+      <p>{{currentRecipe.ingredients}}</p>
+      <p>{{currentRecipe.directions}}</p>
+      </li>
+      <hr>
     </ul>
   </div>
   `
 })
 
 export class AppComponent{
-  currentFocus: string = 'Angular Homework';
-  currentTime = new Date();
-  month:number = this.currentTime.getMonth() +1;
-  day: number = this.currentTime.getDate();
-  year: number = this.currentTime.getFullYear();
-  tasks: Task[] = [
-    new Task('Finish weekend Angular homework for Epicodus course'),
-    new Task('Begin brainstorming possible JavaScript group projects'),
-    new Task('Add README file to last few Angular repos on GitHub')
-];
+  recipies: Recipe[] = [
+    new Recipe('Cake', 'Box of Cake mix, egg, water', 'Add all shit together and bake' ),
+    new Recipe('Baked apple', 'apple', 'cut up apple and bake')
+  ]
 }
-export class Task {
-  public done:boolean = false;
-  constructor(public description:string)
+export class Recipe {
+
+  constructor(public title :string, public ingredients: string, public directions: string)
   {
 
   }
